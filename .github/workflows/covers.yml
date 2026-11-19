@@ -1,0 +1,35 @@
+name: fetch-covers
+on:
+  push:
+    paths: ['covers.txt', '.github/workflows/covers.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download covers from darmasar.com.kw
+        run: |
+          mkdir -p covers
+          : > covers/log.txt
+          curl -sI -A "Mozilla/5.0" "https://darmasar.com.kw/covers/book-01-1.webp" >> covers/log.txt || true
+          echo "-----" >> covers/log.txt
+          while read f; do
+            [ -z "$f" ] && continue
+            code=$(curl -sL --max-time 60 -o "covers/$f" -w "%{http_code}" -A "Mozilla/5.0" -H "Accept: image/webp,image/*" "https://darmasar.com.kw/_next/image?url=%2Fcovers%2F$f&w=384&q=75" || echo ERR)
+            mime=$(file -b --mime-type "covers/$f" 2>/dev/null)
+            if [ "$code" != "200" ] || ! echo "$mime" | grep -q image; then
+              code=$(curl -sL --max-time 60 -o "covers/$f" -w "%{http_code}" -A "Mozilla/5.0" "https://darmasar.com.kw/covers/$f" || echo ERR)
+              mime=$(file -b --mime-type "covers/$f" 2>/dev/null)
+            fi
+            echo "$f $code $(stat -c%s covers/$f 2>/dev/null) $mime" >> covers/log.txt
+          done < covers.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add covers
+          git commit -m "Update book covers" || echo "no changes"
+          git push
