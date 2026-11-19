@@ -765,10 +765,10 @@ function renderChips(){
 }
 let introDone = false;
 const WEB_COVERS = Object.fromEntries(DEFAULT_CATALOG.filter(b => b.web).map(b => [b.isbn, b.web]));
-function webCover(b){ const f = SUPA && b && (WEB_COVERS[b.isbn] || WEB_COVERS[b.id]); return f ? "https://darmasar.com.kw/_next/image?url=" + encodeURIComponent("/covers/" + f) + "&w=384&q=75" : ""; }
+function webCover(b){ const f = SUPA && b && (WEB_COVERS[b.isbn] || WEB_COVERS[b.id]); return f ? "covers/" + f : ""; }
 function coverErr(img){
-  const m = img.src.match(/[?&]url=([^&]+)/);
-  if (m && !img.dataset.f) { img.dataset.f = "1"; img.src = "https://darmasar.com.kw" + decodeURIComponent(m[1]); return; }
+  const m = img.src.match(/\/covers\/([\w.\-]+\.webp)$/);
+  if (SUPA && m && !img.dataset.f && !/darmasar\.com\.kw/.test(img.src)) { img.dataset.f = "1"; img.src = "https://darmasar.com.kw/covers/" + m[1]; return; }
   const b = S.books.get(img.closest(".book")?.dataset.add || "");
   const cv = img.parentElement; img.remove();
   if (b && cv && !cv.querySelector(".gen")) cv.insertAdjacentHTML("beforeend", `<div class="gen" style="--c:${catColor(b.category)}"><img src="${BRAND.markW}" alt=""><b>${esc(b.title)}</b><small>${esc(b.author)}</small></div>`);
