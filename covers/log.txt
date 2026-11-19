@@ -1,0 +1,54 @@
+HTTP/2 200 
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=2592000
+cache-control: public, max-age=0
+content-security-policy: frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.myfatoorah.com; object-src 'none'
+content-type: image/webp
+date: Thu, 19 Nov 2026 12:10:54 GMT
+etag: W/"10de4-1a1be31ef50"
+last-modified: Mon, 09 Nov 2026 02:45:06 GMT
+permissions-policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000; includeSubDomains
+via: 1.1 Caddy
+x-content-type-options: nosniff
+x-frame-options: DENY
+content-length: 69092
+
+-----
+new-where-is-she-1.webp 200 17956 image/webp
+new-dark-web-2-1.webp 200 24220 image/webp
+new-coffee-1.webp 200 15920 image/webp
+new-not-guilty-1.webp 200 17928 image/webp
+new-singapore-1.webp 200 28698 image/webp
+book-01-1.webp 200 17382 image/webp
+book-02-1.webp 200 18006 image/webp
+book-03-1.webp 200 63404 image/webp
+book-04-1.webp 200 25118 image/webp
+book-05-1.webp 200 20586 image/webp
+book-06-1.webp 200 36226 image/webp
+book-07-1.webp 200 35286 image/webp
+book-08-1.webp 200 18380 image/webp
+book-09-1.webp 200 18022 image/webp
+book-10-1.webp 200 28524 image/webp
+book-11-1.webp 200 23880 image/webp
+book-12-1.webp 200 37864 image/webp
+book-13-1.webp 200 15666 image/webp
+book-14-1.webp 200 15638 image/webp
+book-15-1.webp 200 18650 image/webp
+book-16-1.webp 200 14338 image/webp
+book-17-1.webp 200 20936 image/webp
+book-18-1.webp 200 20366 image/webp
+book-19-1.webp 200 15096 image/webp
+book-20-1.webp 200 15202 image/webp
+book-21-1.webp 200 14214 image/webp
+book-22-1.webp 200 17462 image/webp
+book-26-1.webp 200 16610 image/webp
+book-27-1.webp 200 10380 image/webp
+book-28-1.webp 200 29462 image/webp
+book-29-1.webp 200 27070 image/webp
+book-30-1.webp 200 20610 image/webp
+book-31-1.webp 200 16174 image/webp
+book-32-1.webp 200 13106 image/webp
+book-33-1.webp 200 14144 image/webp
+book-34-1.webp 200 11166 image/webp
