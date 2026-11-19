@@ -571,6 +571,7 @@ async function supaPull(full){
       if (rows.length < 500) break;
     }
     supaCursor = since; ls.set("scur", supaCursor);
+    if (full && !S.books.size) { const now = Date.now(); DEFAULT_CATALOG.forEach(b => putBook(cleanBook(b.isbn, {...b, updatedAt:now}))); render(); }
     if (S.cloud !== "readonly") S.cloud = "ok";
     if (got) refresh(true); else renderSync();
     if (S.pending.length) flush();
